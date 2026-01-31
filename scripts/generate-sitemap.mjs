@@ -6,7 +6,7 @@ const dataPath = path.join(projectRoot, 'src', 'data', 'routes.json')
 const distDir = path.join(projectRoot, 'dist')
 
 const normalizeBaseUrl = (value) => {
-  const fallback = 'https://www.englishcalculators.com'
+  const fallback = 'https://english-calculators.netlify.app'
   const raw = value && value.trim().length > 0 ? value.trim() : fallback
   const cleaned = raw.endsWith('/') ? raw.slice(0, -1) : raw
   return cleaned || fallback

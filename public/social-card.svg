@@ -1,0 +1,20 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="English Calculators">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="70" y="70" width="1060" height="490" rx="32" fill="#0b1220" stroke="#2dd4bf" stroke-width="3" />
+  <g fill="#e2e8f0" font-family="Segoe UI, Arial, sans-serif">
+    <text x="140" y="210" font-size="56" font-weight="700">English Calculators</text>
+    <text x="140" y="290" font-size="28">Personal finance and education ROI tools</text>
+    <text x="140" y="380" font-size="24" fill="#94a3b8">Fast estimates. Clear explanations. Accessible by design.</text>
+  </g>
+  <g>
+    <circle cx="1020" cy="200" r="60" fill="#22d3ee" opacity="0.2" />
+    <circle cx="1040" cy="220" r="40" fill="#38bdf8" opacity="0.35" />
+    <circle cx="980" cy="250" r="80" fill="#14b8a6" opacity="0.15" />
+  </g>
+</svg>

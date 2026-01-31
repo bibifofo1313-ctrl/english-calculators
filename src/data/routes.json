@@ -1,0 +1,109 @@
+﻿{
+  "site": {
+    "name": "English Calculators",
+    "tagline": "Personal finance and education ROI calculators.",
+    "description": "Fast, accessible calculators for compound interest, loans, mortgages, student debt, investment fees, and salary conversions.",
+    "contactEmail": "support@englishcalculators.com"
+  },
+  "corePages": [
+    {
+      "id": "home",
+      "path": "/",
+      "title": "English Calculators | Personal Finance & Education ROI Tools",
+      "description": "Fast, accessible calculators for compound interest, loans, mortgages, student debt, investment fees, and salary conversions.",
+      "breadcrumb": "Home"
+    },
+    {
+      "id": "calculators",
+      "path": "/calculators",
+      "title": "All Calculators | English Calculators",
+      "description": "Browse personal finance and education ROI calculators with clear explanations and trustworthy estimates.",
+      "breadcrumb": "Calculators"
+    }
+  ],
+  "legalPages": [
+    {
+      "id": "privacy",
+      "path": "/privacy",
+      "title": "Privacy Policy | English Calculators",
+      "description": "Learn how English Calculators handles data and protects your privacy.",
+      "breadcrumb": "Privacy"
+    },
+    {
+      "id": "terms",
+      "path": "/terms",
+      "title": "Terms of Use | English Calculators",
+      "description": "Read the terms and conditions for using English Calculators.",
+      "breadcrumb": "Terms"
+    },
+    {
+      "id": "accessibility",
+      "path": "/accessibility",
+      "title": "Accessibility Statement | English Calculators",
+      "description": "Accessibility features, standards, and how to get support.",
+      "breadcrumb": "Accessibility"
+    }
+  ],
+  "calculators": [
+    {
+      "id": "compound-interest",
+      "path": "/calculators/compound-interest",
+      "title": "Compound Interest Calculator",
+      "description": "Estimate future savings with monthly contributions and compound interest.",
+      "breadcrumb": "Compound Interest",
+      "category": "Investing",
+      "popular": true,
+      "related": ["investment-fee-impact", "loan-payment", "mortgage-payment"]
+    },
+    {
+      "id": "loan-payment",
+      "path": "/calculators/loan-payment",
+      "title": "Loan Payment Calculator",
+      "description": "Calculate monthly payments, total interest, and payoff cost for fixed-rate loans.",
+      "breadcrumb": "Loan Payment",
+      "category": "Loans",
+      "popular": true,
+      "related": ["mortgage-payment", "student-loan-payoff", "compound-interest"]
+    },
+    {
+      "id": "mortgage-payment",
+      "path": "/calculators/mortgage-payment",
+      "title": "Mortgage Payment Calculator",
+      "description": "Estimate mortgage payment including taxes, insurance, and HOA.",
+      "breadcrumb": "Mortgage Payment",
+      "category": "Loans",
+      "popular": true,
+      "related": ["loan-payment", "compound-interest", "salary-to-hourly"]
+    },
+    {
+      "id": "student-loan-payoff",
+      "path": "/calculators/student-loan-payoff",
+      "title": "Student Loan Payoff Calculator",
+      "description": "See how long it takes to pay off student loans by balance, rate, and payment.",
+      "breadcrumb": "Student Loan Payoff",
+      "category": "Education ROI",
+      "popular": true,
+      "related": ["loan-payment", "salary-to-hourly", "investment-fee-impact"]
+    },
+    {
+      "id": "investment-fee-impact",
+      "path": "/calculators/investment-fee-impact",
+      "title": "Investment Fee Impact Calculator",
+      "description": "Compare investment growth with and without fees to see the long-term cost.",
+      "breadcrumb": "Investment Fee Impact",
+      "category": "Investing",
+      "popular": false,
+      "related": ["compound-interest", "salary-to-hourly", "student-loan-payoff"]
+    },
+    {
+      "id": "salary-to-hourly",
+      "path": "/calculators/salary-to-hourly",
+      "title": "Salary to Hourly Calculator",
+      "description": "Convert annual salary to hourly pay based on weeks and hours worked.",
+      "breadcrumb": "Salary to Hourly",
+      "category": "Salary",
+      "popular": false,
+      "related": ["student-loan-payoff", "mortgage-payment", "loan-payment"]
+    }
+  ]
+}

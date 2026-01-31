@@ -1,11 +1,18 @@
-# React + TypeScript + Vite
+﻿# React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Netlify SPA routing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project uses client-side routing (React Router), so Netlify must always serve `index.html` for
+deep links (for example `/calculators/loan-payment`). The SPA routing configuration lives in
+`netlify.toml`, which sets the build command, publish directory, and a redirect rule.
+
+### Verify locally and on Netlify
+
+1. Run `npm run build` and confirm `dist/index.html` and `dist/assets/*` exist.
+2. Deploy to Netlify (build command `npm run build`, publish directory `dist`).
+3. Open a deep link on Netlify (e.g. `/calculators/loan-payment`) and refresh; it should not 404.
 
 ## React Compiler
 

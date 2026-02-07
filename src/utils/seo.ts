@@ -1,4 +1,4 @@
-﻿const FALLBACK_SITE_URL = 'https://www.englishcalculators.com'
+const FALLBACK_SITE_URL = 'https://english-calculators.netlify.app'
 
 const normalizeUrl = (value?: string) => {
   if (!value) return FALLBACK_SITE_URL
@@ -8,9 +8,8 @@ const normalizeUrl = (value?: string) => {
 }
 
 export const getSiteUrl = () => {
-  const envUrl = (import.meta as { env: { SITE_URL?: string; VITE_SITE_URL?: string } }).env
-    .SITE_URL
-  return normalizeUrl(envUrl)
+  const env = (import.meta as { env: { SITE_URL?: string; VITE_SITE_URL?: string } }).env
+  return normalizeUrl(env.VITE_SITE_URL ?? env.SITE_URL)
 }
 
 export const buildCanonical = (path: string) => `${getSiteUrl()}${path}`

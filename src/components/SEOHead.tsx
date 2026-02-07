@@ -1,6 +1,7 @@
-﻿import { useEffect } from 'react'
+import { useEffect } from 'react'
 import { site } from '../data/routes'
 import { buildCanonical, getDefaultSocialImage } from '../utils/seo'
+import { useHeadStore } from './HeadProvider'
 
 type SEOHeadProps = {
   title: string
@@ -39,11 +40,34 @@ export const SEOHead = ({
   image,
   structuredData,
 }: SEOHeadProps) => {
-  useEffect(() => {
-    const canonical = buildCanonical(path)
-    const socialImage = image ?? getDefaultSocialImage()
+  const canonical = buildCanonical(path)
+  const socialImage = image ?? getDefaultSocialImage()
+  const jsonLd = structuredData ? JSON.stringify(structuredData) : ''
+  const headStore = useHeadStore()
 
+  headStore.set({
+    title,
+    meta: [
+      { name: 'description', content: description },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:url', content: canonical },
+      { property: 'og:type', content: ogType },
+      { property: 'og:site_name', content: site.name },
+      { property: 'og:image', content: socialImage },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:image', content: socialImage },
+    ],
+    link: [{ rel: 'canonical', href: canonical }],
+    script: structuredData ? [{ type: 'application/ld+json', json: jsonLd }] : [],
+    htmlAttributes: { lang: 'en' },
+  })
+
+  useEffect(() => {
     document.title = title
+    document.documentElement.lang = 'en'
 
     upsertMeta('meta[name="description"]', { name: 'description' }, description)
     upsertLink('canonical', canonical)
@@ -69,14 +93,14 @@ export const SEOHead = ({
         script.id = scriptId
         document.head.appendChild(script)
       }
-      script.textContent = JSON.stringify(structuredData)
+      script.textContent = jsonLd
     } else {
       const existing = document.getElementById('structured-data')
       if (existing) {
         existing.remove()
       }
     }
-  }, [title, description, path, ogType, image, structuredData])
+  }, [title, description, canonical, ogType, socialImage, structuredData, jsonLd])
 
   return null
 }

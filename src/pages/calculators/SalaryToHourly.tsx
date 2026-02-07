@@ -1,4 +1,5 @@
-﻿import { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { CalculatorLayout } from '../../components/CalculatorLayout'
 import { FormField } from '../../components/FormField'
 import { ResultPanel } from '../../components/ResultPanel'
@@ -62,6 +63,46 @@ const SalaryToHourly = () => {
 
   const structuredData = [buildBreadcrumbSchema(getBreadcrumbs(calculator.path)), buildFaqSchema(faqs)]
 
+  const content = (
+    <section className="section">
+      <h2>What it does</h2>
+      <p>
+        The salary to hourly calculator converts an annual salary into hourly, weekly, and monthly
+        pay based on the hours and weeks you actually work. This is helpful when a job offer is
+        presented as a salary but you need to compare it to hourly or contract work. By adjusting
+        hours per week and weeks per year, you can model time off, seasonal work, or shorter work
+        years and see how they affect your effective hourly rate.
+      </p>
+      <h2>When to use it</h2>
+      <p>
+        Use this calculator when comparing a salaried role to an hourly offer, or when you are
+        negotiating compensation and want to translate salary into a clear rate. It is also useful
+        for budgeting monthly expenses like loan payments and housing costs. If you need to compare
+        your income to a mortgage or rent target, check the{' '}
+        <Link to="/calculators/mortgage-payment">Mortgage Payment Calculator</Link>. If you are
+        estimating debt payments, the{' '}
+        <Link to="/calculators/loan-payment">Loan Payment Calculator</Link> can provide a helpful
+        benchmark.
+      </p>
+      <h2>How it works</h2>
+      <p>
+        The calculator divides your annual salary by the total number of hours you work in a year,
+        which is your weekly hours multiplied by weeks worked. It then shows the equivalent weekly
+        and monthly amounts for quick comparisons. Because it uses gross salary, it does not include
+        taxes, benefits, or bonuses. Adjust the inputs to reflect real work schedules, such as 48
+        work weeks if you take four weeks off.
+      </p>
+      <h2>Example</h2>
+      <p>
+        Imagine a $72,000 salary with a 40-hour week and 52 weeks per year. The calculator will show
+        the hourly rate, weekly paycheck, and monthly average. If you plan to take unpaid leave,
+        drop the weeks to 48 and see how your hourly rate changes. When weighing income against
+        student loan payments, compare your monthly figure to the output of the{' '}
+        <Link to="/calculators/student-loan-payoff">Student Loan Payoff Calculator</Link>.
+      </p>
+    </section>
+  )
+
   return (
     <>
       <SEOHead
@@ -120,6 +161,7 @@ const SalaryToHourly = () => {
             </p>
           </ResultPanel>
         }
+        content={content}
         faqs={faqs}
         relatedCalculators={related}
       />

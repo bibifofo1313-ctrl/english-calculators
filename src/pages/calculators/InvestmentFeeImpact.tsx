@@ -1,4 +1,5 @@
-﻿import { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { CalculatorLayout } from '../../components/CalculatorLayout'
 import { FormField } from '../../components/FormField'
 import { ResultPanel } from '../../components/ResultPanel'
@@ -79,6 +80,47 @@ const InvestmentFeeImpact = () => {
 
   const structuredData = [buildBreadcrumbSchema(getBreadcrumbs(calculator.path)), buildFaqSchema(faqs)]
 
+  const content = (
+    <section className="section">
+      <h2>What it does</h2>
+      <p>
+        The investment fee impact calculator compares growth with and without annual fees so you
+        can see the long-term cost of expense ratios or advisory charges. You enter your starting
+        balance, yearly contributions, expected annual return, time horizon, and fee percentage.
+        The output shows how much your account could grow without fees, how much it might grow after
+        fees, and the estimated amount lost to fees over time. This makes small fee differences
+        easier to understand.
+      </p>
+      <h2>When to use it</h2>
+      <p>
+        Use this tool when you are choosing between funds or platforms with different expense
+        ratios, or when you are considering advisory fees. It is also useful if you are deciding
+        whether a fee is worth the services provided. To see baseline growth without fees, start
+        with the <Link to="/calculators/compound-interest">Compound Interest Calculator</Link>. If
+        you want to compare investing to paying down debt, the{' '}
+        <Link to="/calculators/student-loan-payoff">Student Loan Payoff Calculator</Link> can help
+        frame that decision.
+      </p>
+      <h2>How it works</h2>
+      <p>
+        The calculator treats the fee as a percentage of assets charged annually, reducing the
+        effective return rate. It computes growth twice: once with the gross return rate and once
+        with the net return after fees. The difference between the two balances is the estimated
+        cost of fees. The model assumes consistent annual contributions and does not account for
+        taxes or changing market returns, so it is best used for directional comparisons.
+      </p>
+      <h2>Example</h2>
+      <p>
+        Say you have $15,000 invested, add $3,000 each year, expect a 6.5% return, and plan to
+        invest for 20 years. A 1% annual fee reduces the net return to 5.5%. The calculator will
+        show two balances and the gap between them, illustrating the long-term cost of fees. You
+        can test a lower fee to see how much you could keep over time, then compare the outcome to
+        other goals like housing using the{' '}
+        <Link to="/calculators/mortgage-payment">Mortgage Payment Calculator</Link>.
+      </p>
+    </section>
+  )
+
   return (
     <>
       <SEOHead
@@ -157,6 +199,7 @@ const InvestmentFeeImpact = () => {
             </p>
           </ResultPanel>
         }
+        content={content}
         faqs={faqs}
         relatedCalculators={related}
       />

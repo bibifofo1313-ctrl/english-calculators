@@ -1,13 +1,22 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { hydrateRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import App from './App.tsx'
+import { AppRoutes } from './App.tsx'
+import { createHeadStore, HeadProvider } from './components/HeadProvider'
 import { PreferencesProvider } from './components/PreferencesProvider'
 
-createRoot(document.getElementById('root')!).render(
+const headStore = createHeadStore()
+
+hydrateRoot(
+  document.getElementById('root')!,
   <StrictMode>
-    <PreferencesProvider>
-      <App />
-    </PreferencesProvider>
+    <HeadProvider store={headStore}>
+      <PreferencesProvider>
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </PreferencesProvider>
+    </HeadProvider>
   </StrictMode>,
 )

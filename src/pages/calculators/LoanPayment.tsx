@@ -1,4 +1,5 @@
-﻿import { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { CalculatorLayout } from '../../components/CalculatorLayout'
 import { FormField } from '../../components/FormField'
 import { ResultPanel } from '../../components/ResultPanel'
@@ -67,6 +68,44 @@ const LoanPayment = () => {
 
   const structuredData = [buildBreadcrumbSchema(getBreadcrumbs(calculator.path)), buildFaqSchema(faqs)]
 
+  const content = (
+    <section className="section">
+      <h2>What it does</h2>
+      <p>
+        The loan payment calculator estimates the monthly payment for a fixed-rate installment loan
+        and shows how much interest you will pay over the full term. It uses your loan amount,
+        interest rate, and repayment term to calculate the payment, the total interest, and the
+        total cost of the loan. This gives you a clear view of how much the loan will cost beyond
+        the original principal and helps you compare offers on the same footing.
+      </p>
+      <h2>When to use it</h2>
+      <p>
+        Use this tool when you are comparing personal loans, auto loans, or consolidation offers.
+        It is also helpful when you are refinancing and want to see how a new rate or term changes
+        the monthly payment. If you are modeling a home loan specifically, the{' '}
+        <Link to="/calculators/mortgage-payment">Mortgage Payment Calculator</Link> includes taxes
+        and insurance. If you want to see the payoff timeline for a fixed payment, try the{' '}
+        <Link to="/calculators/student-loan-payoff">Student Loan Payoff Calculator</Link>.
+      </p>
+      <h2>How it works</h2>
+      <p>
+        The formula assumes a fixed interest rate and equal monthly payments that cover principal
+        and interest over the life of the loan. It converts the annual rate to a monthly rate and
+        spreads repayment across the number of months in the term. If the rate is 0%, the payment
+        is simply the loan amount divided by months. It does not include origination fees, taxes,
+        or insurance, so you can add those to your budget separately.
+      </p>
+      <h2>Example</h2>
+      <p>
+        Imagine borrowing $20,000 at 7% for five years. The calculator will return a monthly payment
+        and show how much of the total cost is interest. You can then test what happens if you
+        shorten the term to four years or lower the rate by 1%. If you are weighing saving versus
+        paying off debt, compare the monthly payment to the growth estimate from the{' '}
+        <Link to="/calculators/compound-interest">Compound Interest Calculator</Link>.
+      </p>
+    </section>
+  )
+
   return (
     <>
       <SEOHead
@@ -125,6 +164,7 @@ const LoanPayment = () => {
             </p>
           </ResultPanel>
         }
+        content={content}
         faqs={faqs}
         relatedCalculators={related}
       />

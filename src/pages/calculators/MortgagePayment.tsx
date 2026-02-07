@@ -1,4 +1,5 @@
-﻿import { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { CalculatorLayout } from '../../components/CalculatorLayout'
 import { FormField } from '../../components/FormField'
 import { ResultPanel } from '../../components/ResultPanel'
@@ -94,6 +95,47 @@ const MortgagePayment = () => {
   ]
 
   const structuredData = [buildBreadcrumbSchema(getBreadcrumbs(calculator.path)), buildFaqSchema(faqs)]
+
+  const content = (
+    <section className="section">
+      <h2>What it does</h2>
+      <p>
+        The mortgage payment calculator estimates your full monthly housing cost by combining the
+        principal and interest payment with property taxes, homeowners insurance, and optional HOA
+        or PMI costs. Enter the home price, down payment, interest rate, and loan term to see the
+        core loan payment, then add the annual tax rate and insurance premium to get a more realistic
+        total. This helps you understand what it takes to carry a mortgage, not just the loan
+        itself.
+      </p>
+      <h2>When to use it</h2>
+      <p>
+        Use this calculator when comparing homes or evaluating what price range fits your monthly
+        budget. It is useful before pre-approval, when negotiating rates, or when deciding between
+        a larger down payment and a higher monthly payment. If you are modeling a simple loan
+        without taxes and insurance, the{' '}
+        <Link to="/calculators/loan-payment">Loan Payment Calculator</Link> is a faster alternative.
+        For affordability checks, compare the output to your income with the{' '}
+        <Link to="/calculators/salary-to-hourly">Salary to Hourly Calculator</Link>.
+      </p>
+      <h2>How it works</h2>
+      <p>
+        The calculator uses the standard amortization formula to compute the principal-and-interest
+        portion of your payment over the selected term. It then adds monthly property taxes based on
+        the annual tax rate, plus monthly insurance and HOA/PMI values. The result is an estimate,
+        and real lender quotes may include escrow fees or different insurance assumptions, so use it
+        to test scenarios and adjust inputs as your numbers change.
+      </p>
+      <h2>Example</h2>
+      <p>
+        Suppose you are shopping for a $350,000 home with a $70,000 down payment at 6.2% for 30
+        years. Add a 1.1% tax rate, $1,200 annual insurance, and any HOA or PMI costs. The calculator
+        will show each component and the combined monthly payment, helping you see whether a smaller
+        down payment or a shorter term fits your plan. If you are also saving toward a down payment,
+        compare your timeline with the{' '}
+        <Link to="/calculators/compound-interest">Compound Interest Calculator</Link>.
+      </p>
+    </section>
+  )
 
   return (
     <>
@@ -192,6 +234,7 @@ const MortgagePayment = () => {
             </p>
           </ResultPanel>
         }
+        content={content}
         faqs={faqs}
         relatedCalculators={related}
       />

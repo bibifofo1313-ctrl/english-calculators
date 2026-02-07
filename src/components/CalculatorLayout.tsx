@@ -9,6 +9,7 @@ type CalculatorLayoutProps = {
   intro: string
   form: ReactNode
   results: ReactNode
+  content: ReactNode
   faqs: FAQItem[]
   relatedCalculators: CalculatorMeta[]
 }
@@ -18,6 +19,7 @@ export const CalculatorLayout = ({
   intro,
   form,
   results,
+  content,
   faqs,
   relatedCalculators,
 }: CalculatorLayoutProps) => {
@@ -40,6 +42,8 @@ export const CalculatorLayout = ({
           </p>
         </div>
       </section>
+
+      {content}
 
       <FAQ items={faqs} />
 

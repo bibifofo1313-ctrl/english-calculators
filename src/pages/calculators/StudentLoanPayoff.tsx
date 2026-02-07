@@ -1,4 +1,5 @@
-﻿import { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { CalculatorLayout } from '../../components/CalculatorLayout'
 import { FormField } from '../../components/FormField'
 import { ResultPanel } from '../../components/ResultPanel'
@@ -78,6 +79,45 @@ const StudentLoanPayoff = () => {
 
   const structuredData = [buildBreadcrumbSchema(getBreadcrumbs(calculator.path)), buildFaqSchema(faqs)]
 
+  const content = (
+    <section className="section">
+      <h2>What it does</h2>
+      <p>
+        The student loan payoff calculator estimates how long it will take to pay off a balance
+        based on your current interest rate and monthly payment. It returns the payoff timeline in
+        months and years, the total interest you are projected to pay, and the total amount paid
+        over the life of the loan. This helps you see the cost of carrying a loan over time and
+        understand how payment changes affect your payoff date.
+      </p>
+      <h2>When to use it</h2>
+      <p>
+        Use this calculator when you are deciding how much to pay each month, evaluating refinance
+        options, or checking how a payment increase affects your budget. It is helpful for both
+        federal and private loans as long as the rate and payment are fixed. If you want to compare
+        loans by term and rate rather than payoff time, the{' '}
+        <Link to="/calculators/loan-payment">Loan Payment Calculator</Link> is a better fit. For a
+        broader cash-flow view, pair this with the{' '}
+        <Link to="/calculators/salary-to-hourly">Salary to Hourly Calculator</Link>.
+      </p>
+      <h2>How it works</h2>
+      <p>
+        The calculator converts your annual rate to a monthly rate and estimates the number of
+        payments required to reduce the balance to zero. If your payment does not cover monthly
+        interest, the balance will not shrink and the calculator warns you. When the rate is 0%,
+        the payoff timeline is simply the balance divided by the payment. The results are estimates
+        that assume consistent, on-time payments.
+      </p>
+      <h2>Example</h2>
+      <p>
+        Imagine you owe $28,000 at 5% and can pay $350 per month. The calculator shows the payoff
+        timeframe and total interest paid at that payment level. Increase the payment by $50 and
+        see how many months you shave off the timeline. If you are debating whether to invest extra
+        money instead of paying down debt, you can compare potential growth with the{' '}
+        <Link to="/calculators/compound-interest">Compound Interest Calculator</Link>.
+      </p>
+    </section>
+  )
+
   return (
     <>
       <SEOHead
@@ -135,6 +175,7 @@ const StudentLoanPayoff = () => {
             </p>
           </ResultPanel>
         }
+        content={content}
         faqs={faqs}
         relatedCalculators={related}
       />
